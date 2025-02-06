@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     <div className={styles.App}>
-      <Container>
+      <Container data-bs-theme='dark'>
         <header className={styles.Header}>
           <Row>
             <Col xs={10} md={11}>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../api/axiosDefaults';
-import styles from "../App.module.css"
 import ListGroup from 'react-bootstrap/ListGroup';
 
 const Contacts = () => {
@@ -33,14 +32,11 @@ const Contacts = () => {
                         return (
                             <>
                             <ListGroup.Item variant="secondary">{emp.last_name.charAt(0)}</ListGroup.Item>
-                            {/* <div className={styles.ContactsChar} key={'C' + emp.last_name.charAt(0)}> {emp.last_name.charAt(0)}</div> */}
-                            {/* <div className={styles.Contacts} key={emp.id}>{emp.id} {emp.first_name}</div> */}
                             <ListGroup.Item variant="dark">{emp.first_name}</ListGroup.Item>
                             </>
                         )
                     } else {
                         return (
-                        // <div className={styles.Contacts} key={emp.id}>{emp.id} {emp.first_name}</div>
                         <ListGroup.Item variant="dark">{emp.first_name}</ListGroup.Item>
                         )
                     }

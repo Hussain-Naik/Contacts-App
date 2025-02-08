@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { axiosReq } from '../api/axiosDefaults';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { axiosReq } from "../api/axiosDefaults";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 const EditContact = () => {
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(false);
   const [validated, setValidated] = useState(false);
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { id } = useParams();
   const [inputData, setInputData] = useState({
-      first_name: "",
-      last_name: "",
-      number: "",
-      address: "",
-    });
+    first_name: "",
+    last_name: "",
+    number: "",
+    address: "",
+  });
   const { first_name, last_name, number, address } = inputData;
   const handleChange = (event) => {
     setInputData({
@@ -26,42 +27,39 @@ const EditContact = () => {
   };
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
       event.preventDefault();
-      const form = event.currentTarget;
-      if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-  
-      setValidated(true);
-  
-      try {
-        const { data } = await axiosReq.put(`contacts/${id}/`, inputData);
-        console.log(data);
-        navigate("/");
-      } catch (err) {
-        setErrors(err.response?.data);
-      }
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+
+    try {
+      const { data } = await axiosReq.put(`contacts/${id}/`, inputData);
+      console.log(data);
+      navigate("/");
+    } catch (err) {
+      setErrors(err.response?.data);
+    }
   };
 
   const handleMount = async () => {
-          try {
-          const { data } = await axiosReq.get(`contacts/${id}/`);
-          setInputData(data)
-          setLoaded(true)
-          } catch (err) {
-          console.log(err)
-          }
-      };
-  
+    try {
+      const { data } = await axiosReq.get(`contacts/${id}/`);
+      setInputData(data);
+      setLoaded(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-          handleMount();
-      }, []);
+    handleMount();
+  }, []);
 
-
-  return (
-    loaded 
-    ?
+  return loaded ? (
     <div>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <FloatingLabel
@@ -76,11 +74,11 @@ const EditContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.first_name
-          ? <Form.Text id="firstNameErrors" muted>{errors.first_name}</Form.Text>
-          : null
-          }
-          
+          {errors.first_name ? (
+            <Form.Text id="firstNameErrors" muted>
+              {errors.first_name}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput2"
@@ -94,10 +92,11 @@ const EditContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.last_name
-          ? <Form.Text id="lastNameErrors" muted>{errors.last_name}</Form.Text>
-          : null
-          }
+          {errors.last_name ? (
+            <Form.Text id="lastNameErrors" muted>
+              {errors.last_name}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput3"
@@ -111,10 +110,11 @@ const EditContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.number
-          ? <Form.Text id="contactNumberErrors" muted>{errors.number}</Form.Text>
-          : null
-          }
+          {errors.number ? (
+            <Form.Text id="contactNumberErrors" muted>
+              {errors.number}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingTextarea"
@@ -126,22 +126,27 @@ const EditContact = () => {
             name="address"
             value={address}
             onChange={handleChange}
-            style={{ height: '100px' }}
+            style={{ height: "100px" }}
             required
           />
-          {errors.address
-          ? <Form.Text id="addressErrors" muted>{errors.address}</Form.Text>
-          : null
-          }
+          {errors.address ? (
+            <Form.Text id="addressErrors" muted>
+              {errors.address}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
-        <Button variant="primary" type="submit">
-          Submit
+        <ButtonGroup aria-label="Basic example">
+        <Button variant="secondary" onClick={()=> navigate(`/contact/${id}`)}>
+          Cancel
         </Button>
+        <Button variant="primary" type="submit">
+          Save
+        </Button>
+    </ButtonGroup>
+        
       </Form>
     </div>
-    :
-    null
-  )
-}
+  ) : null;
+};
 
-export default EditContact
+export default EditContact;

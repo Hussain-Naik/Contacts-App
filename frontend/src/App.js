@@ -9,7 +9,6 @@ import CreateContact from "./pages/CreateContact";
 import Header from "./components/Header";
 import EditContact from "./pages/EditContact";
 import ContactDetail from "./pages/ContactDetail";
-import DeleteContact from "./pages/DeleteContact";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
                   <Route exact path="/create/" element={<CreateContact />} />
                   <Route exact path="/contact/:id" element={<ContactDetail />} />
                   <Route exact path="/edit/:id" element={<EditContact />} />
-                  <Route exact path="/delete/:id" element={<DeleteContact />} />
                   <Route path="*" element={<NotFound />} />
               </Routes>
             </Col>

@@ -38,7 +38,7 @@ const Contacts = () => {
             <InputGroup.Text>
               <Search />
             </InputGroup.Text>
-            <Form.Control type="text" placeholder="Search here.." />
+            <Form.Control type="text" placeholder="Search for contact..." />
           </InputGroup>
         </Form.Group>
       </Form>

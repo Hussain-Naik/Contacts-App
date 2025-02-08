@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../api/axiosDefaults';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { useNavigate } from 'react-router-dom';
 
 const Contacts = () => {
     const [loaded, setLoaded] = useState(true)
     const [contacts, setContacts] = useState([])
+    const navigate = useNavigate()
     var previousChar = ''
 
     const handleMount = async () => {
@@ -26,18 +28,18 @@ const Contacts = () => {
         loaded ?
         <ListGroup>
             {
-                contacts.map((emp) => {
-                    if (emp.last_name.charAt(0) !== previousChar) {
-                        previousChar = emp.last_name.charAt(0)
+                contacts.map((contact) => {
+                    if (contact.last_name.charAt(0) !== previousChar) {
+                        previousChar = contact.last_name.charAt(0)
                         return (
                             <>
-                            <ListGroup.Item variant="secondary">{emp.last_name.charAt(0)}</ListGroup.Item>
-                            <ListGroup.Item variant="dark">{emp.first_name}</ListGroup.Item>
+                            <ListGroup.Item variant="secondary">{contact.last_name.charAt(0)}</ListGroup.Item>
+                            <ListGroup.Item onClick={()=> navigate(`/contact/${contact.id}`)} action variant="dark">{contact.first_name} {contact.last_name}</ListGroup.Item>
                             </>
                         )
                     } else {
                         return (
-                        <ListGroup.Item variant="dark">{emp.first_name}</ListGroup.Item>
+                        <ListGroup.Item onClick={()=> navigate(`/contact/${contact.id}`)} action variant="dark">{contact.first_name} {contact.last_name}</ListGroup.Item>
                         )
                     }
                 })

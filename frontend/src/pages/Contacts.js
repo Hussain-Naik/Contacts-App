@@ -8,9 +8,10 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { fetchMoreData } from "../utils/utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Spinner from "react-bootstrap/Spinner";
+import Row from "react-bootstrap/esm/Row";
 
 const Contacts = () => {
-  const [loaded, setLoaded] = useState(true);
+  const [loaded, setLoaded] = useState(false);
   const [contacts, setContacts] = useState({ results: [] });
   const navigate = useNavigate();
   var previousChar = "";
@@ -75,16 +76,24 @@ const Contacts = () => {
           })}
           dataLength={contacts.results.length}
           loader={
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
+            <Row className="justify-content-center">
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </Row>
           }
           hasMore={!!contacts.next}
           next={() => fetchMoreData(contacts, setContacts)}
         />
       </ListGroup>
     </>
-  ) : null;
+  ) : (
+    <Row className="justify-content-center">
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    </Row>
+  );
 };
 
 export default Contacts;

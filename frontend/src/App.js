@@ -17,7 +17,7 @@ function App() {
       <Header />
       <main>
         <Row className="justify-content-center">
-          <Col sm={12} md={6}>
+          <Col xs={12} sm={8} md={6}>
             <Routes>
               <Route exact path="/" element={<Contacts />} />
               <Route exact path="/create/" element={<CreateContact />} />

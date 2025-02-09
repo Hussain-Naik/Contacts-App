@@ -1,6 +1,5 @@
 import styles from "./App.module.css";
 import { Route, Routes } from "react-router-dom/";
-// import Footer from './components/Footer';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,6 +9,7 @@ import Header from "./components/Header";
 import EditContact from "./pages/EditContact";
 import ContactDetail from "./pages/ContactDetail";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
           </Col>
         </Row>
       </main>
+      <Footer />
     </Container>
   );
 }

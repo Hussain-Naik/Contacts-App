@@ -2,15 +2,38 @@ body {
   font-family: "DM Sans", sans-serif;
   background-color: #343a40;
 }
+
+main {
+  min-height: 85vh;
+}
+
 .App {
   min-height: 100vh;
 }
 
 .Header {
-  color: royalblue;
   font-size: large;
+  margin-top: 1%;
 }
 
+.AppName {
+  text-decoration: none;
+  color: royalblue;
+  text-transform: capitalize;
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+.CreateIcon {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+.CreateIcon:hover {
+  color: deepskyblue;
+}
+
+.Footer {
+  color: lightgrey;
+}
 .ButtonIcon {
   border: none;
 }

@@ -1,6 +1,8 @@
-.App {
+body {
   font-family: "DM Sans", sans-serif;
   background-color: #343a40;
+}
+.App {
   min-height: 100vh;
 }
 

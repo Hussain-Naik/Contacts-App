@@ -40,20 +40,20 @@ const ContactDetail = () => {
   return loaded ? (
     <div>
       <Row className="justify-content-evenly">
-          <Button
-            onClick={() => navigate(`/edit/${id}`)}
-            variant="outline-primary"
-            className={styles.ButtonIcon}
-          >
-            <PencilSquare /> Edit
-          </Button>
-          <Button
-            onClick={() => setModalShow(true)}
-            variant="outline-danger"
-            className={styles.ButtonIcon}
-          >
-            <TrashFill /> Delete
-          </Button>
+        <Button
+          onClick={() => navigate(`/edit/${id}`)}
+          variant="outline-primary"
+          className={styles.ButtonIcon}
+        >
+          <PencilSquare /> Edit
+        </Button>
+        <Button
+          onClick={() => setModalShow(true)}
+          variant="outline-danger"
+          className={styles.ButtonIcon}
+        >
+          <TrashFill /> Delete
+        </Button>
       </Row>
 
       <Form className="mt-2">

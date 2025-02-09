@@ -7,13 +7,16 @@ const NotFound = () => {
   return (
     <ListGroup>
       <ListGroup.Item
-      className="justify-content-center"
+        className="justify-content-center"
         onClick={() => navigate(`/`)}
         action
         variant="warning"
       >
         <h2>Page not found!</h2>
-        <p>We could not find what you were looking for. Please click here to be redirected to home</p>
+        <p>
+          We could not find what you were looking for. Please click here to be
+          redirected to home
+        </p>
       </ListGroup.Item>
     </ListGroup>
   );

@@ -138,19 +138,19 @@ const EditContact = () => {
           ) : null}
         </FloatingLabel>
         <Row className="justify-content-center">
-              <Col xs={3}>
-              <Button
-                variant="secondary"
-                onClick={() => navigate(`/contact/${id}`)}
-              >
-                Cancel
-              </Button>
-              </Col>
-              <Col xs={3}>
-              <Button variant="primary" type="submit">
-                Save
-              </Button>
-              </Col>
+          <Col xs={3}>
+            <Button
+              variant="secondary"
+              onClick={() => navigate(`/contact/${id}`)}
+            >
+              Cancel
+            </Button>
+          </Col>
+          <Col xs={3}>
+            <Button variant="primary" type="submit">
+              Save
+            </Button>
+          </Col>
         </Row>
       </Form>
     </div>

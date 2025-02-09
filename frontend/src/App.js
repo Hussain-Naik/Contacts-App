@@ -16,7 +16,7 @@ function App() {
     <Container className={styles.App} data-bs-theme="dark">
       <Header />
       <main>
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Col sm={12} md={6}>
             <Routes>
               <Route exact path="/" element={<Contacts />} />

@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { axiosReq } from "../api/axiosDefaults";
 import { useNavigate } from "react-router-dom";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const CreateContact = () => {
   const [validated, setValidated] = useState(false);
@@ -58,11 +60,11 @@ const CreateContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.first_name
-          ? <Form.Text id="firstNameErrors" muted>{errors.first_name}</Form.Text>
-          : null
-          }
-          
+          {errors.first_name ? (
+            <Form.Text id="firstNameErrors" muted>
+              {errors.first_name}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput2"
@@ -76,10 +78,11 @@ const CreateContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.last_name
-          ? <Form.Text id="lastNameErrors" muted>{errors.last_name}</Form.Text>
-          : null
-          }
+          {errors.last_name ? (
+            <Form.Text id="lastNameErrors" muted>
+              {errors.last_name}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingInput3"
@@ -93,10 +96,11 @@ const CreateContact = () => {
             onChange={handleChange}
             required
           />
-          {errors.number
-          ? <Form.Text id="contactNumberErrors" muted>{errors.number}</Form.Text>
-          : null
-          }
+          {errors.number ? (
+            <Form.Text id="contactNumberErrors" muted>
+              {errors.number}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
         <FloatingLabel
           controlId="floatingTextarea"
@@ -108,17 +112,22 @@ const CreateContact = () => {
             name="address"
             value={address}
             onChange={handleChange}
-            style={{ height: '100px' }}
+            style={{ height: "100px" }}
             required
           />
-          {errors.address
-          ? <Form.Text id="addressErrors" muted>{errors.address}</Form.Text>
-          : null
-          }
+          {errors.address ? (
+            <Form.Text id="addressErrors" muted>
+              {errors.address}
+            </Form.Text>
+          ) : null}
         </FloatingLabel>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <Row className="justify-content-center">
+          <Col xs={3}>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </>
   );

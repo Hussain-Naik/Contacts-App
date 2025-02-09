@@ -4,7 +4,9 @@ import { axiosReq } from "../api/axiosDefaults";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const EditContact = () => {
   const [loaded, setLoaded] = useState(false);
@@ -135,15 +137,21 @@ const EditContact = () => {
             </Form.Text>
           ) : null}
         </FloatingLabel>
-        <ButtonGroup aria-label="Basic example">
-        <Button variant="secondary" onClick={()=> navigate(`/contact/${id}`)}>
-          Cancel
-        </Button>
-        <Button variant="primary" type="submit">
-          Save
-        </Button>
-    </ButtonGroup>
-        
+        <Row className="justify-content-center">
+              <Col xs={3}>
+              <Button
+                variant="secondary"
+                onClick={() => navigate(`/contact/${id}`)}
+              >
+                Cancel
+              </Button>
+              </Col>
+              <Col xs={3}>
+              <Button variant="primary" type="submit">
+                Save
+              </Button>
+              </Col>
+        </Row>
       </Form>
     </div>
   ) : null;

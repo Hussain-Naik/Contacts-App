@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { PencilSquare, TrashFill } from "react-bootstrap-icons";
 import DeleteModal from "../components/DeleteModal";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const ContactDetail = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -37,9 +39,24 @@ const ContactDetail = () => {
 
   return loaded ? (
     <div>
-      <Button onClick={()=> navigate(`/edit/${id}`)} variant="outline-primary" className={styles.ButtonIcon}><PencilSquare /> Edit</Button>
-      <Button onClick={() => setModalShow(true)} variant="outline-danger" className={styles.ButtonIcon}><TrashFill /> Delete</Button>
-      <Form>
+      <Row className="justify-content-evenly">
+          <Button
+            onClick={() => navigate(`/edit/${id}`)}
+            variant="outline-primary"
+            className={styles.ButtonIcon}
+          >
+            <PencilSquare /> Edit
+          </Button>
+          <Button
+            onClick={() => setModalShow(true)}
+            variant="outline-danger"
+            className={styles.ButtonIcon}
+          >
+            <TrashFill /> Delete
+          </Button>
+      </Row>
+
+      <Form className="mt-2">
         <FloatingLabel
           controlId="floatingInput"
           label="First Name"
@@ -76,7 +93,7 @@ const ContactDetail = () => {
             name="number"
             value={number}
             disabled
-                        required
+            required
           />
         </FloatingLabel>
         <FloatingLabel
@@ -94,7 +111,13 @@ const ContactDetail = () => {
           />
         </FloatingLabel>
       </Form>
-      <DeleteModal show={modalShow} onHide={() => setModalShow(false)} first_name={first_name} last_name={last_name} id={id}/>
+      <DeleteModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        first_name={first_name}
+        last_name={last_name}
+        id={id}
+      />
     </div>
   ) : null;
 };

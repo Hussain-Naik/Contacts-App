@@ -60,7 +60,18 @@ Create a local copy of the GitHub repository by following one of the two process
 1. Create a superuser to get access to the admin environment.
     - `python3 manage.py createsuperuser`
     - Enter the required information (your username, email and password).
+
+1. From your project root directory access the frontend directory
+    - `cd frontend/`
+
+1. Install node packages for react app
+    - `npm install`
+
+1. Build react production app
+    - `npm run build`
+
 1. Run the app with the following command in the terminal:
+    - change directory to backend
     - `python3 manage.py runserver`
 1. Open the link provided in a browser to see the app.
 
@@ -68,6 +79,7 @@ Create a local copy of the GitHub repository by following one of the two process
     - Add /admin/ to the link provided.
     - Enter your username and password (for the superuser that you have created before).
     - You will be redirected to the admin page.
+
 
 
 ## Render Deployment

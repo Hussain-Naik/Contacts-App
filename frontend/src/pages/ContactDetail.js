@@ -8,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import { PencilSquare, TrashFill } from "react-bootstrap-icons";
 import DeleteModal from "../components/DeleteModal";
 import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
 
 const ContactDetail = () => {
   const [modalShow, setModalShow] = useState(false);

@@ -68,3 +68,70 @@ Create a local copy of the GitHub repository by following one of the two process
     - Add /admin/ to the link provided.
     - Enter your username and password (for the superuser that you have created before).
     - You will be redirected to the admin page.
+
+
+## Render Deployment
+
+### Create Database on Render
+
+1. Create a new Render account if you don't already have one here [Render](https://render.com/).
+
+2. Create a new instance of the PostgreSQL database.
+
+3. Select a name for your database and select the free plan.
+
+4. Click "Select Region"
+
+5. Select a region close to you.
+
+6. Click "Create Instance"
+
+7. Click on the name of your database to open the dashboard.
+
+8. Copy the database URL from Connect > External and paste as a string for the os.environ['DATABASE_URL'] variable.
+
+### Create a new app on Render
+
+
+1. Create a new Render account if you don't already have one here [Render](https://render.com/).
+
+2. Create a new application on the following page here [New Render App](https://dashboard.render.com/), choose **Web Service**:
+
+3. Select Build and deploy from a Git repository
+
+4. Search for the repository you created and click "Connect."
+
+5. Create name for the application
+
+6. Select the region where you want to deploy the application.
+
+7. Select branch to deploy.
+
+8. Select Python 3 as runtime option.
+
+9. Render build command: `./build.sh`
+
+10. Render start command: `./start.sh` 
+
+11. Select Free plan.
+
+12. Add the following environment variables:
+
+    - Key: DATABASE_URL Value: *************
+    - Key: SECRET_KEY Value: *************
+
+    *DATABASE_URL value is takes from render dashboard, SECRET_KEY value is takes from your local env.py file, CLOUDINARY_URL value is taken from cloudinary dashboard.*
+
+13. Create a superuser for your database from your local deployment.
+
+    ```bash
+        python manage.py createsuperuser
+    ```
+
+14. Commit and push the changes to GitHub.
+
+15. Go back to Render and click "Create Web Service."
+
+16. Wait for the completion of the deployment.
+
+17. Start using the application

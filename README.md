@@ -1,5 +1,7 @@
 # Contacts-App
-
+*required server environments to run application locally*
+  - `Node`
+  - `Python`
 
 ## Local deployment
 
